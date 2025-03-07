@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 Auteur: Warre Didden
-=======
-Auteur: WarreDidden
->>>>>>> opdracht_branch
+
  
 CANDY CRUSH spelregels 
  
