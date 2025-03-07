@@ -1,3 +1,33 @@
-# TODO: Vul deze Makefile zodat je met `make compile` alle bestanden in de `/src` directory compiled en linked, waarbij de object files in de `/build` directory komen, en dat de uiteindelijke binary `friendshiptester.bin` in de root directory terecht komt. Zorg er ook voor dat je met `make clean` de build directory en de binary verwijdert en dat je met `make run` het programma kan uitvoeren en dat je ook hier flags aan kan meegeven.
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c11
+SRCDIR = ./src
+BUILDDIR = ./build
 
+# Zoek alle .c bestanden in de SRCDIR
+CFILES = $(wildcard $(SRCDIR)/*.c)
+# Genereer de bijhorende .o bestanden in BUILDDIR
+OBJECTS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(CFILES))
 
+TARGET = friendshiptester.bin
+
+all: $(TARGET)
+
+# Link de objectfiles om de uiteindelijke binary te maken
+$(TARGET): $(OBJECTS)
+	$(CC) -o $@ $^
+
+# Compileer de C-bestanden naar object-bestanden
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Zorg dat de build-directory bestaat
+$(BUILDDIR):
+	mkdir -p $(BUILDDIR)
+
+compile: $(TARGET)
+
+clean:
+	rm -rf $(BUILDDIR) $(TARGET)
+
+run: $(TARGET)
+	./$(TARGET) $(ARGS)
