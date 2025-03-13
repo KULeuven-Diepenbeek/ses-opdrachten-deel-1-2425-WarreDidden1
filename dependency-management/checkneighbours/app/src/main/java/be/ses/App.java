@@ -2,7 +2,7 @@ package be.ses;
 
 import java.util.Arrays;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         Iterable<Integer> grid = Arrays.asList(
             0, 0, 1, 0,
