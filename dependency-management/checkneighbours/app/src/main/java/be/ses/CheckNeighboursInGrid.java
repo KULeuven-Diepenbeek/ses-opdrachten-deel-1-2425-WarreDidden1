@@ -54,6 +54,42 @@ public class CheckNeighboursInGrid {
             }
         }
 
+        // Check diagonaal links-boven
+        if (row > 0 && col > 0) {
+            int topLeftIndex = indexToCheck - width - 1;
+            System.out.println("Links-boven: index " + topLeftIndex + " (Value: " + gridList.get(topLeftIndex) + ")");
+            if (gridList.get(topLeftIndex).equals(valueToCheck)) {
+                result.add(topLeftIndex);
+            }
+        }
+
+        // Check diagonaal rechts-boven
+        if (row > 0 && col < width - 1) {
+            int topRightIndex = indexToCheck - width + 1;
+            System.out.println("Rechts-boven: index " + topRightIndex + " (Value: " + gridList.get(topRightIndex) + ")");
+            if (gridList.get(topRightIndex).equals(valueToCheck)) {
+                result.add(topRightIndex);
+            }
+        }
+
+        // Check diagonaal links-onder
+        if (row < height - 1 && col > 0) {
+            int bottomLeftIndex = indexToCheck + width - 1;
+            System.out.println("Links-onder: index " + bottomLeftIndex + " (Value: " + gridList.get(bottomLeftIndex) + ")");
+            if (gridList.get(bottomLeftIndex).equals(valueToCheck)) {
+                result.add(bottomLeftIndex);
+            }
+        }
+
+        // Check diagonaal rechts-onder
+        if (row < height - 1 && col < width - 1) {
+            int bottomRightIndex = indexToCheck + width + 1;
+            System.out.println("Rechts-onder: index " + bottomRightIndex + " (Value: " + gridList.get(bottomRightIndex) + ")");
+            if (gridList.get(bottomRightIndex).equals(valueToCheck)) {
+                result.add(bottomRightIndex);
+            }
+        }
+
         return result;
     }
 }
