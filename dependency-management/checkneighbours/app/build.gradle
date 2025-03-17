@@ -16,14 +16,19 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation libs.junit.jupiter
+    // JUnit 5 (Jupiter API)
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
 
+    // Zorg ervoor dat Gradle JUnit 5 tests correct uitvoert
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // This dependency is used by the application.
-    implementation libs.guava
+    // AssertJ blijft hetzelfde
+    testImplementation "org.assertj:assertj-core:3.24.2"
+
+    // Mockito blijft ook hetzelfde
+    testImplementation 'org.mockito:mockito-core:5.3.1'
 }
+
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {

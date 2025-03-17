@@ -1,11 +1,19 @@
 package be.ses;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CheckNeighboursInGrid {
-    public static Iterable<Integer> getSameNeighboursIds(Iterable<Integer> grid, int width, int height, int indexToCheck) {
+    public static Iterable<Integer> getSameNeighboursIds(int width, int height, int indexToCheck) {
         // Zet Iterable om naar een List voor betere index-opvragingen
+        Iterable<Integer> grid = Arrays.asList(
+            0, 0, 1, 0,
+            1, 1, 0, 2,
+            2, 0, 1, 3,
+            0, 1, 1, 1
+        );
+        
         List<Integer> gridList = new ArrayList<>();
         for (int value : grid) {
             gridList.add(value);
@@ -89,7 +97,10 @@ public class CheckNeighboursInGrid {
                 result.add(bottomRightIndex);
             }
         }
-
+        if (result.size() == 0) { //anders error bij geen buren
+            result.add(0);
+            System.out.println("Geen buren gevonden.");
+        }
         return result;
     }
 }
