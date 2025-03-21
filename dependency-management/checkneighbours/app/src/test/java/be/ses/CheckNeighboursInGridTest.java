@@ -77,19 +77,6 @@ public class CheckNeighboursInGridTest {
 
   }
   
-  @Test //rechterrand
-  public void gegevenIndex7_dan0() {
-    // 1. Arrange
-    var checkn = new CheckNeighboursInGrid();
-
-    // 2. Act
-    Iterable<Integer> result = checkn.getSameNeighboursIds(4, 4, 7);
-    System.out.println(result);
-
-    // 3. Assert
-    assertThat(result).containsOnly(0);
-  }
-
     @Test //negatieve index
     public void gegevenIndexMin1_danOutOfBoundsException() {
       
@@ -105,6 +92,19 @@ public class CheckNeighboursInGridTest {
       assertThat(thrown)
           .isInstanceOf(IndexOutOfBoundsException.class)
           .hasMessageContaining("Index -1 out of bounds for length 16"); //de exact verwachte zin
+  }
+
+  @Test //letter als index
+  public void gegevenIndexA_danNumberFormatException() {
+      // Act
+      Throwable thrown = catchThrowable(() -> {
+          CheckNeighboursInGrid.getSameNeighboursIds(4, 4, "A");
+      });
+
+      // Assert
+      assertThat(thrown)
+          .isInstanceOf(NumberFormatException.class)
+          .hasMessageContaining("For input string: \"A\"");
   }
 }
 

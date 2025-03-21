@@ -5,7 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CheckNeighboursInGrid {
+    public static Iterable<Integer> getSameNeighboursIds(int width, int height, String indexToCheckStr) {
+        int indexToCheck;
+        try {
+            indexToCheck = Integer.parseInt(indexToCheckStr);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("For input string: \"" + indexToCheckStr + "\"");
+        }
+
+        return getSameNeighboursIds(width, height, indexToCheck);
+    }
+
     public static Iterable<Integer> getSameNeighboursIds(int width, int height, int indexToCheck) {
+       
         // Zet Iterable om naar een List voor betere index-opvragingen
         Iterable<Integer> grid = Arrays.asList(
             0, 0, 1, 0,
