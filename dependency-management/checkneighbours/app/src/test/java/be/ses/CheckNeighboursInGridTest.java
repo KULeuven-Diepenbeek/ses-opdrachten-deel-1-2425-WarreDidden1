@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.Arrays;
 
 public class CheckNeighboursInGridTest {
-    @Test 
+    @Test  // ergens in het midden
     public void gegevenIndex5_dan2en4en10() {
 
       // 1. Arrange
@@ -33,7 +33,7 @@ public class CheckNeighboursInGridTest {
       // 3. Assert
       assertThat(result).containsExactly(6);
     }
-    @Test //linkerrand
+    @Test //geen buren
     public void gegevenIndex8_dan0() {
 
       // 1. Arrange
